@@ -1,0 +1,35 @@
+Ref Rev: 0c79b8c6fa263d5a9865e87b7e4231d463f83f1d
+
+Additions:
+Disabled Packet optimisation for MQTT
+HTTP Server packet formation
+Card ID fillter API for avoiding Card iD repetition in payload packet
+Stack size in linker options to 8196
+Removed GPS info check
+Packet send intervel changes to 9s
+APN Name set for Idea SIM
+TCP shut during GSM init to take care of a connected case during boot up
+
+
+Setup:
+Power on RFID reader
+Power on modem
+Poweron control hub
+Connect serial interface of control hub with modem.
+Can see modem comands in a virtual termial (baud : 115200)
+
+Working:
+Http packets are successfully uploaded to server(:-)
+Updated in mobile app
+Sending packets in alternate reset of control hub-if modem is once in connected state
+Sending mutipple card info with a delay of 3-4 min after new card entry 
+
+
+Known Issues:
+If control hub restarts packet sending faliled with +CME error.
+it will send packets successfully in a next successive reset of control hub
+This works only after modem is Ready.
+If modem restarted/network disconnected need to reset control hub for sending packets
+If reader restarted during working, no packets have been sent.(network connection is not automatically established)
+Need to reset control hub after reader restarts
+New cards read with a delay of 4-5 min after entry/exit 
